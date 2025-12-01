@@ -11,7 +11,7 @@ export default function Familiares() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:4000/familiares")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/familiares`)
       .then((res) => res.json())
       .then((data) => mostrarRegistros(data))
       .catch((err) => console.error("Error al cargar familiares:", err))
@@ -44,3 +44,4 @@ export default function Familiares() {
     </main>
   );
 }
+
