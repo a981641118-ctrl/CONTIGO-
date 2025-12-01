@@ -83,7 +83,7 @@ export default function FormMedicamentos({ id }: any) {
           setLoading(false);
         })
     }
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/familiares")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/familiares`)
       .then((res) => res.json())
       .then((data) => asignarFamiliares(data))
       .catch((err) => console.error("Error al cargar familiares:", err));
@@ -217,4 +217,5 @@ export default function FormMedicamentos({ id }: any) {
     </div>
   );
 }
+
 
