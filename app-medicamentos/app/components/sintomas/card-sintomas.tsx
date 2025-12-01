@@ -5,7 +5,7 @@ export default function CardSintomas({ data }: any) {
   const eliminarRegistro = async (id: Number) => {
     var a = confirm("¿Eliminar registro?");
     if (a) {
-      const res = await fetch("http://localhost:4000/sintomas/delete/" + id, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sintomas/delete/` + id, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -57,5 +57,6 @@ export default function CardSintomas({ data }: any) {
     </div>
   );
 }
+
 
 
