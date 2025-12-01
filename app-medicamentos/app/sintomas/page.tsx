@@ -9,7 +9,7 @@ export default function Sintomas() {
 
   const [data, setData] = useState([]);
     useEffect(() => {
-      fetch("http://localhost:4000/sintomas")
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/sintomas`)
         .then((res) => res.json())
         .then((data) => mostrarRegistros(data))
         .catch((err) => console.error("Error al cargar registros:", err));
@@ -34,3 +34,4 @@ export default function Sintomas() {
     </main>
   );
 }
+
