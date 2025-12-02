@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
-import CardMedicamentos from "../components/medicamentos/card-medicamentos";
+import CardMedicamentos from "../../components/medicamentos/card-medicamentos";
 import { format } from 'date-fns';
 
 export default function Medicamentos() {

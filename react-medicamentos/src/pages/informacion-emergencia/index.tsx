@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
-import CardEmergenciaFamiliar from "../components/familiar-emergencia/card-emergencia-familiar";
+import CardEmergenciaFamiliar from "../../components/familiar-emergencia/card-emergencia-familiar";
 import { format } from 'date-fns';
 
 export default function InformacionEmergencia() {

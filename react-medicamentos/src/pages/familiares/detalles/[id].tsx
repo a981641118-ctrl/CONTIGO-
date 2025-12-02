@@ -1,5 +1,5 @@
 "use client";
-import DetallesFamiliar from "../../components/familiares/detalles-familiar";
+import DetallesFamiliar from "../../../components/familiares/detalles-familiar";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 

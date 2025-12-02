@@ -1,6 +1,6 @@
 "use client";
 
-import FormFamiliar from "../../components/familiares/form-familiar";
+import FormFamiliar from "../../../components/familiares/form-familiar";
 import { useRouter } from "next/router";
 export default function EditarFamiliar() {
   const router = useRouter();

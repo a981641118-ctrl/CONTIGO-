@@ -19,7 +19,7 @@ import {
 } from "@mui/icons-material";
 import Image from "next/image";
 
-import LogoContigo from "./components/LogoContigo";
+import LogoContigo from "../components/LogoContigo";
 
 export default function Login() {
   const [correo, setCorreo] = useState("");

@@ -1,5 +1,5 @@
 "use client";
-import FormMedicamentos from "../../components/medicamentos/form-medicamentos";
+import FormMedicamentos from "../../../components/medicamentos/form-medicamentos";
 import { useRouter } from "next/router";
 
 export default function NuevoMedicamento() {

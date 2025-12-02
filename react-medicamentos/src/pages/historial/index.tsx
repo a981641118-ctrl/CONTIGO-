@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { format } from "date-fns";
-import CardHistorial from "../components/historial/card-historial";
-import CardEmergenciaFamiliar from "../components/historial/card-emergencia-familiar";
+import CardHistorial from "../../components/historial/card-historial";
+import CardEmergenciaFamiliar from "../../components/historial/card-emergencia-familiar";
 
 export default function Historial() {
   const [data, setData] = useState([]);

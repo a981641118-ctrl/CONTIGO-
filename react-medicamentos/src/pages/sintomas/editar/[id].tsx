@@ -1,5 +1,5 @@
 "use client";
-import FormSintomas from "../../components/sintomas/form-sintomas";
+import FormSintomas from "../../../components/sintomas/form-sintomas";
 import { useRouter } from "next/router";
 
 export default function NuevoMedicamento() {

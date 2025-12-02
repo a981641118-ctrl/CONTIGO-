@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import CardFamiliar from "../components/familiares/card-familiar"
+import CardFamiliar from "../../components/familiares/card-familiar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { format } from 'date-fns';
