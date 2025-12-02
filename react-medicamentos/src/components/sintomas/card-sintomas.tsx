@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Chip from '@mui/material/Chip';
+
 export default function CardSintomas({ data }: any) {
   const eliminarRegistro = async (id: Number) => {
     var a = confirm("¿Eliminar registro?");
     if (a) {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sintomas/delete/` + id, {
+      // CORRECCIÓN 1: Usar la variable de entorno en lugar de localhost
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sintomas/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -31,9 +33,11 @@ export default function CardSintomas({ data }: any) {
       case 'severo':
         return 'error';
       default:
-        return 'default'; // <--- CAMBIO AQUÍ (Antes era '')
+        // CORRECCIÓN 2: Devolver 'default' en lugar de ''
+        return 'default';
     }
   }
+
   return (
     <div className="card">
       <div className="card-text">
@@ -46,6 +50,7 @@ export default function CardSintomas({ data }: any) {
         <p> {data.fecha_inicio} </p>
       </div>
       <div className="card-actions">
+        {/* Asegúrate de que esta ruta sea correcta según tu nueva estructura */}
         <a href={`sintomas/editar/${data.id_sintoma}`}>
           <FontAwesomeIcon icon={faEdit} size="lg" />
         </a>
