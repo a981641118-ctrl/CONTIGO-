@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 4000;
 // **********************************************
 // ********* CONFIGURACIÓN DE CORS **************
 // **********************************************
-
 // 1. Define los orígenes (dominios) que están permitidos para hacer peticiones.
 const allowedOrigins = [
     // El dominio de tu frontend desplegado en Vercel (¡VERIFICA QUE SEA EXACTO!)
@@ -97,11 +96,13 @@ app.post("/auth/login", async (req, res) => {
     if (!correo || !password)
         return res.status(400).json({ error: "Datos incompletos" });
     try {
-        // --- AQUÍ ESTÁ EL PRIMER PUNTO DE FALLO POTENCIAL: CONEXIÓN A DB ---
+        // Ejecuta la consulta
         const result = await pool.query(
             "SELECT id_usuario,nombre,correo,id_rol,password_hash,contacto_emergencia_nombre,contacto_emergencia_telefono FROM usuarios WHERE correo = $1",
             [correo]
         );
+        
+        // El resto de la lógica de login
         if (!result.rows.length)
             return res.status(401).json({ error: "Credenciales inválidas" });
         const u = result.rows[0];
@@ -113,9 +114,11 @@ app.post("/auth/login", async (req, res) => {
         delete u.password_hash;
         res.json({ token, usuario: u });
     } catch (err) {
-        // Si hay un error aquí, es probable que la base de datos no esté conectada.
-        console.error("Error en /auth/login:", err.message); 
-        res.status(500).json({ error: "Error al iniciar sesión. (Verifica la conexión a la DB en Render)" });
+        // *** ESTE CATCH ES EL QUE CAPTURA EL ERROR DE CONEXIÓN A LA DB ***
+        console.error("Error crítico en /auth/login (DB o Query):", err.message); 
+        res.status(500).json({ 
+            error: "Error interno al iniciar sesión. Por favor, revisa los logs en Render para verificar la conexión a la base de datos." 
+        });
     }
 });
 
@@ -557,4 +560,3 @@ app.get("/familiares/historial/:id", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
-
