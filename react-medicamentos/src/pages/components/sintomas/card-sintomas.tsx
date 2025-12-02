@@ -31,10 +31,9 @@ export default function CardSintomas({ data }: any) {
       case 'severo':
         return 'error';
       default:
-        return '';
+        return 'default'; // <--- CAMBIO AQUÍ (Antes era '')
     }
   }
-
   return (
     <div className="card">
       <div className="card-text">
