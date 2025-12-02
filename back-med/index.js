@@ -13,25 +13,16 @@ const PORT = process.env.PORT || 4000;
 
 // 1. Define los orígenes (dominios) que están permitidos para hacer peticiones.
 const allowedOrigins = [
-    // El dominio de tu frontend desplegado en Vercel
+    // El dominio de tu frontend desplegado en Vercel (¡VERIFICA QUE SEA EXACTO!)
     'https://contigo-two.vercel.app', 
-    // Puedes agregar localhost para desarrollo local (si usas otro puerto)
+    // Puedes agregar localhost para desarrollo local
     'http://localhost:3000', 
     'http://localhost:5000' 
 ];
 
 const corsOptions = {
-    // La función 'origin' verifica si el dominio solicitante está en la lista de permitidos
-    origin: function (origin, callback) {
-        // Permite peticiones si no tienen origen (como Postman o navegadores antiguos)
-        // O si el origen está en nuestra lista de permitidos.
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            // Muestra un error si el origen no está permitido
-            callback(new Error('Not allowed by CORS policy'));
-        }
-    },
+    // Usamos la lista de orígenes directamente. El paquete 'cors' maneja la lógica de permitir/denegar.
+    origin: allowedOrigins,
     // Esto es CRUCIAL para que el login funcione y las credenciales (cookies, headers de auth) se envíen.
     credentials: true, 
 };
@@ -124,7 +115,7 @@ app.post("/auth/login", async (req, res) => {
     } catch (err) {
         // Si hay un error aquí, es probable que la base de datos no esté conectada.
         console.error("Error en /auth/login:", err.message); 
-        res.status(500).json({ error: "Error al iniciar sesión" });
+        res.status(500).json({ error: "Error al iniciar sesión. (Verifica la conexión a la DB en Render)" });
     }
 });
 
